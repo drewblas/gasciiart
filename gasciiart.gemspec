@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   # If you have other dependencies, add them here
   # s.add_dependency "another", "~> 1.2"
   s.add_development_dependency 'rspec', '2.10.0'
+  s.add_development_dependency 'fakefs', '0.4.0'
 
   # If you need to check in files that aren't .rb files, add them here
   s.require_paths = ["lib"]
