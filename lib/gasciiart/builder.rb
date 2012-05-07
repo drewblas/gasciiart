@@ -95,9 +95,9 @@ class Gasciiart::Builder
 
     log "Running: #{cmd}"
     `#{cmd}`
-    if $?.exitstatus != 0
-      raise IOError, %{Error executing command: "#{cmd}"}
-    end
+    # if $?.exitstatus != 0
+    #   raise IOError, %{Error executing command: "#{cmd}"}
+    # end
 
     Dir.chdir @starting_dir
   end
