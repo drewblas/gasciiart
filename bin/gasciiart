@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+
+require 'gasciiart'
+
+options = {}
+source = './'
+target = "output"
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: gasciiart [options]"
+
+  opts.on("-v", "--[no-]verbose", "Run verbosely") do |v|
+    options[:verbose] = v
+  end
+
+  opts.on("-t", "--target DIRECTORY", "Targets an EMPTY directory as the output for the resulting repo.  Defaults to 'output'") do |file|
+    target = file
+  end
+
+  opts.on('-h', '--help', 'Dispaly this screen') do
+    puts opts
+    exit
+  end
+end.parse!
+
+b = Gasciiart::Builder.new(source, target, options)
+b.build!
+
