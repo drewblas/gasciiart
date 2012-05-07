@@ -14,11 +14,12 @@ class Gasciiart::Builder
   end
 
   # Where all the magic happens
-  # 
+  # Setups up the output and loops through each file from the source (in `ls` order)
+  # Creating a commit for each file
   def build!
     test_git!
 
-    file_list = Dir.glob "#{@source}*" # Pull the file list before creating the target directory
+    file_list = Dir.glob("#{@source}*").sort # Pull the file list before creating the target directory
 
     setup_target
 
