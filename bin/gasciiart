@@ -19,6 +19,10 @@ OptionParser.new do |opts|
     target = file
   end
 
+  opts.on("-s", "--source DIRECTORY", "Source directory of inputs") do |file|
+    source = file
+  end
+
   opts.on('-h', '--help', 'Dispaly this screen') do
     puts opts
     exit
