@@ -23,12 +23,15 @@ class Gasciiart::Builder
 
     setup_target
 
+    add_runner
+
     file_list.each do |infile_name|
       rewrite_animation_frame infile_name
       create_commit infile_name
     end
   end
 
+  # Creates and git inits the target directory
   def setup_target
     log "Setting up #{@target}"
 
@@ -54,6 +57,17 @@ class Gasciiart::Builder
 
   def create_commit(infile_name)
     run %{git add animation.txt && git commit -m "#{infile_name}"}
+  end
+
+  def add_runner
+    filename = "#{@target}run.sh"
+    File.open(filename, 'w') do |f|
+      f.write Gasciiart::RUNNER
+    end
+
+    File.chmod 0755, filename
+
+    run %{git add run.sh && git commit -m "Added run.sh"}
   end
 
   protected
